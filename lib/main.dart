@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:video_test/ui/auth/phoneLoginPage.dart';
 import 'Bloc/auth/bloc/auth_bloc.dart';
 import 'repository/auth/firebase_auth.dart';
 import 'ui/Pages/homePage.dart';
@@ -23,9 +24,14 @@ class MyApp extends StatelessWidget {
     return BlocProvider(
       create: (context) => AuthBloc(firebaseAuth_Google: Firebase_GoogleImp()),
       child: MaterialApp(
+        initialRoute: '/',
+        routes: {
+          '/' : (context) => FirebaseAuth.instance.currentUser !=null?  HomePage() : LoginPage() ,
+          '/PhoneLoginPage':(context) => PhoneLoginPage(),
+        },
         debugShowCheckedModeBanner: false,
         title: 'Video_demo',
-        home:FirebaseAuth.instance.currentUser !=null?  HomePage() : LoginPage()  ,
+       // home:FirebaseAuth.instance.currentUser !=null?  HomePage() : LoginPage()  ,
       ),
     );
   }

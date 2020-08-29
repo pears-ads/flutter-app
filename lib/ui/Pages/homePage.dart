@@ -15,9 +15,7 @@ class HomePage extends StatelessWidget {
       googleSignIn.signOut();
       await FirebaseAuth.instance.signOut();
      debugPrint('signOut');
-    //  Navigator.push(context, MaterialPageRoute(builder: (context){
-    //    return LoginPage();
-    //  }));
+      Navigator.pushNamedAndRemoveUntil(context, '/', (route) => false);
       
     }
 
@@ -31,7 +29,7 @@ class HomePage extends StatelessWidget {
             body:SafeArea(
 
                           child: Center(
-
+                            
                             child: Container(
                               child: Column(
                                 children:<Widget>[
