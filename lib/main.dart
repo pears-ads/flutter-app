@@ -2,12 +2,10 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:google_sign_in/google_sign_in.dart';
-import 'package:video_test/repository/auth/firebase_auth.dart';
-import 'package:video_test/ui/Pages/homePage.dart';
-import 'package:video_test/ui/auth/loginPage.dart';
-
 import 'Bloc/auth/bloc/auth_bloc.dart';
+import 'repository/auth/firebase_auth.dart';
+import 'ui/Pages/homePage.dart';
+import 'ui/auth/loginPage.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

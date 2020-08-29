@@ -14,8 +14,8 @@ class AuthInitial extends AuthState {
 }
 
 //loaded state[Success] [google sign in]
-class AuthLoadedGoogle extends AuthState{
-  const AuthLoadedGoogle();
+class AuthLoaded extends AuthState{
+  const AuthLoaded();
   @override
   List<Object> get props => [];
 }

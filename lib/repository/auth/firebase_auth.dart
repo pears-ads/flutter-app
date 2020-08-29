@@ -1,9 +1,8 @@
-import 'dart:ffi';
-
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:video_test/ui/Pages/homePage.dart';
+
+import '../../ui/Pages/homePage.dart';
 
 abstract class FirebaseAuth_Google {
 
@@ -34,14 +33,14 @@ class Firebase_GoogleImp implements FirebaseAuth_Google{
   }
 
   @override
-   final _codeController = TextEditingController();
+  final _codeController = TextEditingController();
  Future<bool> phoneLogIn(String phoneNumber, BuildContext context) {
         final _auth =FirebaseAuth.instance;
       _auth.verifyPhoneNumber(
         phoneNumber: phoneNumber,
         timeout: Duration(seconds: 60),
        verificationCompleted: (AuthCredential credential) async{
-           Navigator.of(context).pop();
+          //  Navigator.of(context).pop();
 
           UserCredential result = await _auth.signInWithCredential(credential);
 
@@ -66,6 +65,7 @@ class Firebase_GoogleImp implements FirebaseAuth_Google{
       
                   
                     showDialog(
+                    
             context: context,
             barrierDismissible: false,
             builder: (context) {
@@ -83,7 +83,7 @@ class Firebase_GoogleImp implements FirebaseAuth_Google{
                   FlatButton(
                     child: Text("Confirm"),
                     textColor: Colors.white,
-                    color: Colors.blue,
+                    color: Color(0xff314755),
                     onPressed: () async{
                       final code = _codeController.text.trim();
                       AuthCredential credential = PhoneAuthProvider.credential(verificationId: verificationId, smsCode: code);

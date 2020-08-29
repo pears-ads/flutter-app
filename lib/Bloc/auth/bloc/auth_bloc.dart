@@ -5,7 +5,7 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 
-import 'package:video_test/repository/auth/firebase_auth.dart';
+import '../../../repository/auth/firebase_auth.dart';
 
 part 'auth_event.dart';
 part 'auth_state.dart';
@@ -22,7 +22,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     if (event is SignInWithGoogle) {
      try {
       final user = await firebaseAuth_Google.sign();
-      yield AuthLoadedGoogle();
+      yield AuthLoaded();
      } catch (_) {
        yield AuthErrorState();
      }

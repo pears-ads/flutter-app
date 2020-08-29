@@ -1,12 +1,10 @@
 //this is login Page
 
-import 'dart:typed_data';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:video_test/Bloc/auth/bloc/auth_bloc.dart';
-import 'package:video_test/repository/auth/firebase_auth.dart';
 import 'package:video_test/ui/Pages/homePage.dart';
+import 'package:video_test/ui/auth/phoneLoginPage.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({Key key}) : super(key: key);
@@ -19,7 +17,7 @@ class LoginPage extends StatelessWidget {
     return Scaffold(
         body: BlocListener<AuthBloc, AuthState>(
       listener: (context, state) {
-        if (state is AuthLoadedGoogle) {
+        if (state is AuthLoaded) {
           Navigator.push(context, MaterialPageRoute(builder: (context) {
             return HomePage();
           }));
@@ -40,16 +38,16 @@ class LoginPage extends StatelessWidget {
   }
 
   Widget initialLoginWidget(BuildContext context, double height) {
-    TextEditingController phoneNumberController = TextEditingController();
+ 
     final width = MediaQuery.of(context).size.width;
     return SingleChildScrollView(
       child: Container(
         height: height,
         decoration: BoxDecoration(
           image: DecorationImage(
-            colorFilter: ColorFilter.mode(Colors.white24.withOpacity(0.8),BlendMode.dstATop ),
-              image: AssetImage("lib/assets/background.jpg",),
-
+            
+              image: AssetImage("lib/assets/background.jfif",),
+              //colorFilter: ColorFilter.mode(Colors.white24.withOpacity(0.8),BlendMode.dstATop ),
               fit: BoxFit.cover),
         ),
         child: Column(
@@ -103,7 +101,7 @@ class LoginPage extends StatelessWidget {
                       style: TextStyle(
                           fontSize: 20.0,
                           fontWeight: FontWeight.w800,
-                          color: Color(0xff8ed9e5)),
+                          color:Color(0xff26A0DA)),
                     ),
                     SizedBox(width: 10.0)
                   ]),
@@ -158,8 +156,8 @@ class LoginPage extends StatelessWidget {
                         child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: <Widget>[
-                              Image.network(
-                                  'https://www.freepnglogos.com/uploads/facebook-logo-icon/facebook-logo-icon-file-facebook-icon-svg-wikimedia-commons-4.png',
+                              Image.asset(
+                                  'lib/assets/facebook_login_icon.png',
                                   height: height * 0.05),
                               Text(
                                 'Sign in with FaceBook',
@@ -175,7 +173,11 @@ class LoginPage extends StatelessWidget {
                   padding: const EdgeInsets.all(10.0),
                   child: FlatButton(
                       color: Colors.white,
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(context, MaterialPageRoute(builder: (context){
+                          return PhoneLoginPage();
+                        }) );
+                      },
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(30.0)),
                       child: Padding(
@@ -183,8 +185,8 @@ class LoginPage extends StatelessWidget {
                         child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: <Widget>[
-                              Image.network(
-                                  'https://www.freepngimg.com/thumb/telephone/10-2-telephone-png-picture.png',
+                              Image.asset(
+                                  'lib/assets/phone_login_icon.png',
                                   height: height * 0.05),
                               Text(
                                 'Sign in with Mobile',
