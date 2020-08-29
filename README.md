@@ -1,6 +1,7 @@
 //only use master branch for test
 
 //  Make sure internet is active
+
 imp note->
 
 1. facebook auth is tured off by default 
