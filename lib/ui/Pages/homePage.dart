@@ -14,10 +14,10 @@ class HomePage extends StatelessWidget {
     void signOut() async {
       googleSignIn.signOut();
       await FirebaseAuth.instance.signOut();
-    //  debugPrint('signOut');
-     Navigator.push(context, MaterialPageRoute(builder: (context){
-       return LoginPage();
-     }));
+     debugPrint('signOut');
+    //  Navigator.push(context, MaterialPageRoute(builder: (context){
+    //    return LoginPage();
+    //  }));
       
     }
 

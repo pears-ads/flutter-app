@@ -14,7 +14,7 @@ class PhoneLoginPage extends StatelessWidget {
     return Scaffold(
       // key: _scaffoldKey,
       appBar: AppBar(
-        title:Text('Sign in with Phone' ,style: TextStyle(fontFamily: 'Avenir'),),
+        title:Text('Sign in with Phone' ,style: TextStyle(fontFamily: 'Avenir Bold'),),
         backgroundColor: Color(0xff314755),  //(0xff26A0DA
       ),
 
@@ -52,7 +52,7 @@ class PhoneLoginPage extends StatelessWidget {
                             SizedBox(height:height*0.05),
                           
                         FlatButton(onPressed: () {
-                        if(phoneNumberController.text.trim() == '' && phoneNumberController.text.trim().length != 10){
+                        if(phoneNumberController.text.trim() == '' || phoneNumberController.text.trim().length < 12){
                          debugPrint('this is not valid');
                         //  final snackBar = SnackBar(content: Text('please enter valid Phone number !!!'));
                         //   _scaffoldKey.currentState.showSnackBar(snackBar); 

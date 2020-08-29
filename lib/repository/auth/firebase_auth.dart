@@ -70,7 +70,7 @@ class Firebase_GoogleImp implements FirebaseAuth_Google{
             barrierDismissible: false,
             builder: (context) {
               return AlertDialog(
-                title: Text("Give the code?"),
+                title: Text("Enter OTP"  ,style: TextStyle(fontFamily:'Avenir')),
                 content: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: <Widget>[
@@ -81,7 +81,7 @@ class Firebase_GoogleImp implements FirebaseAuth_Google{
                 ),
                 actions: <Widget>[
                   FlatButton(
-                    child: Text("Confirm"),
+                    child: Text("Confirm" ,style: TextStyle(fontFamily:'Avenir'),),
                     textColor: Colors.white,
                     color: Color(0xff314755),
                     onPressed: () async{
