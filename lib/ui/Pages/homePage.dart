@@ -1,8 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+
+import '../auth/loginPage.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key key}) : super(key: key);
@@ -13,8 +14,11 @@ class HomePage extends StatelessWidget {
     void signOut() async {
       googleSignIn.signOut();
       await FirebaseAuth.instance.signOut();
-      //Navigator.pop(context);
-      debugPrint('signOut');
+    //  debugPrint('signOut');
+     Navigator.push(context, MaterialPageRoute(builder: (context){
+       return LoginPage();
+     }));
+      
     }
 
     final double height = MediaQuery.of(context).size.height;
@@ -34,7 +38,7 @@ class HomePage extends StatelessWidget {
                                   SizedBox(height: 300.0,),
                                   Text( FirebaseAuth.instance.currentUser!=null ? 'loged in':'not loged in'),
                                   SizedBox(height:50.0),
-                                  FlatButton(onPressed: (){signOut();}, child: Text('Sign out') , color: Colors.redAccent,),
+                                  FlatButton(onPressed: (){signOut();}, child: Text('Sign out' ,style: TextStyle(fontFamily: 'Avenir Bold'),) , color: Colors.redAccent,),
                                 ]
                               ),
                // child: Text('hello'),

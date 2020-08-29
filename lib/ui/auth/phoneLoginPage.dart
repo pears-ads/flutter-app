@@ -14,7 +14,7 @@ class PhoneLoginPage extends StatelessWidget {
     return Scaffold(
       // key: _scaffoldKey,
       appBar: AppBar(
-        title:Text('Sign in with Phone'),
+        title:Text('Sign in with Phone' ,style: TextStyle(fontFamily: 'Avenir'),),
         backgroundColor: Color(0xff314755),  //(0xff26A0DA
       ),
 
@@ -24,7 +24,7 @@ class PhoneLoginPage extends StatelessWidget {
                           
           Padding(
                               padding: const EdgeInsets.all(12.0),
-                              child: TextFormField(style: TextStyle(color:Colors.black),
+                              child: TextFormField(style: TextStyle(color:Colors.black ,fontFamily: 'Avenir'),
                                 controller: phoneNumberController,
                                 // keyboardType: TextInputType.number,
                                 cursorColor: Colors.black,
@@ -33,7 +33,7 @@ class PhoneLoginPage extends StatelessWidget {
                                   //errorText: phoneNumberController.text.trim() != '' ? null :"please enter phone Number with +91 or your country code",
                                 hintText: 'Phone Number with country code +91',
                                 
-                                hintStyle: TextStyle(color:Colors.black),
+                                hintStyle: TextStyle(color:Colors.black,fontFamily: 'Avenir'),
                                
                                    enabledBorder: OutlineInputBorder(
                                      borderRadius: BorderRadius.all(Radius.circular(20.0)),      

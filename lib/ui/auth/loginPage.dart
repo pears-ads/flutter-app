@@ -76,6 +76,7 @@ class LoginPage extends StatelessWidget {
                       child: Container(
                           child: Text('PEARS',
                               style: TextStyle(
+                                fontFamily: 'Avenir Bold',
                                   fontSize: 30.0, color: Colors.white))),
                     ), //0xff8ed9e5
                     SizedBox(
@@ -99,6 +100,7 @@ class LoginPage extends StatelessWidget {
                     Text(
                       "Opportunity",
                       style: TextStyle(
+                        fontFamily: 'Avenir Bold',
                           fontSize: 20.0,
                           fontWeight: FontWeight.w800,
                           color:Color(0xff26A0DA)),
@@ -107,7 +109,7 @@ class LoginPage extends StatelessWidget {
                   ]),
                 ),
                 SizedBox(width: 10.0,),
-                Text('when you need it' ,style: TextStyle(color:Colors.white ,fontWeight:FontWeight.w800 , fontSize:20.0),)
+                Text('when you need it' ,style: TextStyle(color:Colors.white ,fontFamily: 'Avenir Bold', fontSize:20.0),)
               ],
             ),
             SizedBox(
@@ -136,7 +138,7 @@ class LoginPage extends StatelessWidget {
                                   height: height * 0.05),
                               Text(
                                 'Sign in with Google',
-                                style: TextStyle(fontSize: 20),
+                                style: TextStyle(fontSize: 20 ,fontFamily: 'Avenir'),
                               )
                             ]),
                       )),
@@ -161,7 +163,7 @@ class LoginPage extends StatelessWidget {
                                   height: height * 0.05),
                               Text(
                                 'Sign in with FaceBook',
-                                style: TextStyle(fontSize: 20),
+                                style: TextStyle(fontSize: 20,fontFamily: 'Avenir'),
                               )
                             ]),
                       )),
@@ -190,7 +192,7 @@ class LoginPage extends StatelessWidget {
                                   height: height * 0.05),
                               Text(
                                 'Sign in with Mobile',
-                                style: TextStyle(fontSize: 20),
+                                style: TextStyle(fontSize: 20,fontFamily: 'Avenir'),
                               )
                             ]),
                       )),
