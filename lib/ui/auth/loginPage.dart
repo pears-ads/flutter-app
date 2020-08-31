@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:video_test/Bloc/auth/bloc/auth_bloc.dart';
+import 'package:video_test/repository/auth/firebase_auth.dart';
 import 'package:video_test/ui/Pages/homePage.dart';
 import 'package:video_test/ui/auth/phoneLoginPage.dart';
 
@@ -150,7 +151,9 @@ class LoginPage extends StatelessWidget {
                   padding: const EdgeInsets.all(10.0),
                   child: FlatButton(
                       color: Colors.white,
-                      onPressed: () {},
+                      onPressed: () {
+                        Firebase_GoogleImp().signInWithFacebook();
+                      },
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(30.0)),
                       child: Padding(
@@ -162,7 +165,7 @@ class LoginPage extends StatelessWidget {
                                   'lib/assets/facebook_login_icon.png',
                                   height: height * 0.05),
                               Text(
-                                'Sign in with FaceBook',
+                                'Sign in with Facebook',
                                 style: TextStyle(fontSize: 20,fontFamily: 'Avenir'),
                               )
                             ]),

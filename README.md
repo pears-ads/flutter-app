@@ -5,11 +5,9 @@
 
 imp note->
 
-1. facebook auth is tured off by default 
-2. in phone login please add country code +91
-3. once sign out  please restart app because rout is not decided yet
-4. internet permission is required
-5. app not ready for ios testing
+1. in phone login please add country code +91
+2. internet permission is required
+3. app not ready for ios testing
 
 
 
@@ -19,5 +17,6 @@ imp note->
 // devlopment part only 
 
 todo 
+impl -> add bloc for facebook login
 
 ios -> firebase auth permission enable

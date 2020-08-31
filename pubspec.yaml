@@ -31,11 +31,12 @@ dependencies:
   google_sign_in: ^4.5.1
   flutter_bloc: ^6.0.1
   equatable: ^1.2.3
+  fluid_bottom_nav_bar: ^1.1.1
+  flutter_facebook_login: ^3.0.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -48,10 +49,12 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-   - lib/assets/background.jfif
-   - lib/assets/logo.png
-   - lib/assets/facebook_login_icon.png
-   - lib/assets/phone_login_icon.png
+    - lib/assets/background.jfif
+    - lib/assets/logo.png
+    - lib/assets/facebook_login_icon.png
+    - lib/assets/phone_login_icon.png
+    - lib/assets/svg/settings_icon.svg
+    - lib/assets/svg/home_icon.svg
   #   - images/a_dot_ham.jpeg
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
@@ -66,17 +69,16 @@ flutter:
     - family: Avenir
       fonts:
         - asset: lib/font/avenir/avenir_regular.ttf
-        
+
     - family: Avenir Bold
       fonts:
         - asset: lib/font/avenir/avenir_bold.ttf
-       
+
           weight: 800
     - family: Avenir Italic
       fonts:
         - asset: lib/font/avenir/avenir_italics.ttf
-       
+
           style: italic
-  #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages

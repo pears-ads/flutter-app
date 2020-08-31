@@ -1,5 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_facebook_login/flutter_facebook_login.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 import '../../ui/Pages/homePage.dart';
@@ -7,16 +9,28 @@ import '../../ui/Pages/homePage.dart';
 abstract class FirebaseAuth_Google {
 
   Future<User> sign();
-  Future<bool> phoneLogIn(String userPhoneNumber,BuildContext context);
+  Future<bool> phoneLogIn(String userPhoneNumber,BuildContext context);   
+ // void signOut(BuildContext context);
+  Future<User> signInWithFacebook();              
 }
 
 class Firebase_GoogleImp implements FirebaseAuth_Google{
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final GoogleSignIn googleSignIn =new GoogleSignIn();
+
+  // @override
+  // void signOut(BuildContext context) async{
+  //   googleSignIn.signOut();
+  //    await FirebaseAuth.instance.signOut();
+  //     debugPrint('signOut');
+  //   Navigator.pushNamedAndRemoveUntil(context, '/', (route) => false);
+  // }
+
+
   @override
   Future<User> sign() async{
    try {
-    final GoogleSignInAccount googleSignInAccount = await googleSignIn.signIn();
+    final GoogleSignInAccount googleSignInAccount =  await googleSignIn.signIn();
     GoogleSignInAuthentication gSA = await googleSignInAccount.authentication;
     final AuthCredential credential = GoogleAuthProvider.credential(
       accessToken: gSA.accessToken,
@@ -26,15 +40,19 @@ class Firebase_GoogleImp implements FirebaseAuth_Google{
     User user = userCredential.user;
     print(user);
     return user;
-   } catch (e) {
-     throw Error();
+   } on PlatformException catch(err) {
+      if (err.code == 'sign_in_canceled') { // Checks for sign_in_canceled exception
+      print(err.toString());
+      } else {
+        throw err; // Throws PlatformException again because it wasn't the one we wanted
+      }
    }
    
   }
 
   @override
   final _codeController = TextEditingController();
- Future<bool> phoneLogIn(String phoneNumber, BuildContext context) {
+  Future<bool> phoneLogIn(String phoneNumber, BuildContext context) {
         final _auth =FirebaseAuth.instance;
       _auth.verifyPhoneNumber(
         phoneNumber: phoneNumber,
@@ -113,9 +131,29 @@ class Firebase_GoogleImp implements FirebaseAuth_Google{
          codeAutoRetrievalTimeout: (String verificationId){
            print('auto time out');
          });    
-      } 
-  
+      }
 
- // @override
-  
+  //facebook sign in
+  @override
+  Future<User> signInWithFacebook() async{
+  try {
+     final facebookLogin = FacebookLogin();
+   final result = await facebookLogin.logIn(['public_profile']);
+    if(result.accessToken != null){
+      final authResult = await _auth.signInWithCredential(
+        FacebookAuthProvider.credential(
+          result.accessToken.token
+        )
+      );
+     UserCredential userCredential = await _auth.signInWithCredential(authResult.credential);
+    User user = userCredential.user;
+      return user ;
+    }
+  } catch (err) {
+    throw err;
+  }
+    
+  }
+
+
 }

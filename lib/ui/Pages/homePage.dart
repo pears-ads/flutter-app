@@ -1,22 +1,35 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:fluid_bottom_nav_bar/fluid_bottom_nav_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
-import '../auth/loginPage.dart';
+import '../Widgets/homeConatent.dart';
+import '../Widgets/settingContent.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({Key key}) : super(key: key);
 
+  @override
+  _HomePageState createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  
+ Widget _childContainer;
+  @override
+  void initState() {
+    _childContainer = HomeContent();
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
     final GoogleSignIn googleSignIn = new GoogleSignIn();
     void signOut() async {
       googleSignIn.signOut();
       await FirebaseAuth.instance.signOut();
-     debugPrint('signOut');
+      debugPrint('signOut');
       Navigator.pushNamedAndRemoveUntil(context, '/', (route) => false);
-      
     }
 
     final double height = MediaQuery.of(context).size.height;
@@ -26,25 +39,49 @@ class HomePage extends StatelessWidget {
               .invokeMethod<void>('SystemNavigator.pop');
         },
         child: Scaffold(
-            body:SafeArea(
+          appBar: AppBar(
+            backgroundColor: Color(0xff314755),
+            title:Text('Pears',style: TextStyle(fontFamily:'Avenir Bold'),)
+          ),
+          body: _childContainer,
+          bottomNavigationBar: FluidNavBar(
+          onChange: _handleNavigationChange,
+          icons: [
+            FluidNavBarIcon(iconPath: 'lib/assets/svg/home_icon.svg'),
+            FluidNavBarIcon(iconPath: 'lib/assets/svg/settings_icon.svg')
+          ],
+          style: FluidNavBarStyle(
+          barBackgroundColor: Color(0xff26A0DA),
+          iconBackgroundColor: Colors.white,
+          iconSelectedForegroundColor: Color(0xff26A0DA),
+          iconUnselectedForegroundColor: Colors.black
+          ),
+          animationFactor: 1.0,
+          ),
 
-                          child: Center(
-                            
-                            child: Container(
-                              child: Column(
-                                children:<Widget>[
-                                  SizedBox(height: 300.0,),
-                                  Text( FirebaseAuth.instance.currentUser!=null ? 'loged in':'not loged in'),
-                                  SizedBox(height:50.0),
-                                  FlatButton(onPressed: (){signOut();}, child: Text('Sign out' ,style: TextStyle(fontFamily: 'Avenir Bold'),) , color: Colors.redAccent,),
-                                ]
-                              ),
-               // child: Text('hello'),
-               // child: SvgPicture.string( 'lib\assets\svgs\login_background.svg',height: 100,),
-              ),
-                          ),
-            ),
-            
-            ));
+          
+        )
+        
+        );
+  }
+
+  void _handleNavigationChange(int index){
+     setState(() {
+      switch (index) {
+        case 0:
+          _childContainer = HomeContent();
+          break;
+        case 1:
+          _childContainer = SettingContent(context);
+          break;
+       
+      }
+      _childContainer = AnimatedSwitcher(
+        switchInCurve: Curves.easeOut,
+        switchOutCurve: Curves.easeIn,
+        duration: Duration(milliseconds: 500),
+        child: _childContainer,
+      );
+    });
   }
 }
