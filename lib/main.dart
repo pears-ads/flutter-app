@@ -14,7 +14,10 @@ void main() async {
   runApp(MyApp());
 }
 
+
 //TODO add ios specific login firebase
+//TODO add facebook login for ios
+
 class MyApp extends StatelessWidget {
 
   const MyApp({Key key}) : super(key: key);
