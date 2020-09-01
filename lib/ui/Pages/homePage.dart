@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
-import '../Widgets/homeConatent.dart';
+import '../Widgets/homeContent.dart';
 import '../Widgets/settingContent.dart';
 
 class HomePage extends StatefulWidget {

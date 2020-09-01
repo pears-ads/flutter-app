@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         initialRoute: '/',
         routes: {
-          '/' : (context) => FirebaseAuth.instance.currentUser !=null?  HomePage() : LoginPage() ,
+          '/' : (context) => FirebaseAuth.instance.currentUser !=null?  HomePage() : LoginPage(),
           '/PhoneLoginPage':(context) => PhoneLoginPage(),
         },
         debugShowCheckedModeBanner: false,

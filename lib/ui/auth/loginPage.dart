@@ -134,8 +134,8 @@ class LoginPage extends StatelessWidget {
                         child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: <Widget>[
-                              Image.network(
-                                  'https://www.freepnglogos.com/uploads/google-logo-png/google-logo-png-google-icon-logo-png-transparent-svg-vector-bie-supply-14.png',
+                              Image.asset(
+                                  'lib/assets/google_login_icon.png',
                                   height: height * 0.05),
                               Text(
                                 'Sign in with Google',

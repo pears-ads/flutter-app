@@ -34,7 +34,7 @@ Widget SettingContent(BuildContext context){
                     },
                     child: Text(
                       'Sign out',
-                      style: TextStyle(fontFamily: 'Avenir Bold'),
+                      style: TextStyle(fontFamily: 'Avenir Bold' ,color:Colors.white),
                     ),
                     color: Colors.redAccent,
                   ),
